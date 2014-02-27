@@ -215,3 +215,15 @@ pip-log.txt
 .mr.developer.cfg
 *.hex
 USER/MyBoard.uvgui.Spacelan
+USER/MyBoard.uvopt
+*.axf
+USER/MyBoard.htm
+*.lnp
+USER/MyBoard.map
+USER/MyBoard.plg
+USER/MyBoard.sct
+USER/MyBoard_MyBoard.dep
+*.crf
+*.d
+*.o
+USER/startup_stm32f10x_md.lst
