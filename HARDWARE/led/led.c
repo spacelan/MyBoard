@@ -1,4 +1,4 @@
-#include "myled.h"
+#include "led.h"
 /*
  * 函数名：MyLED_GPIO_Config
  * 描述  ：配置LED用到的I/O口
@@ -19,7 +19,5 @@ void MyLED_Config(void)
 
 void MyLED_Toggle(void)
 {
-	u8 f;
-	f = PAin(15);
-	PAout(15) = !f;
+	PAout(15) = !(PAin(15));
 }
