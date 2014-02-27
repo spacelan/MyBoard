@@ -2,6 +2,7 @@
 #include "usart.h"
 #include "time.h"
 #include "led.h"
+#include "i2c.h"
 	
 int main(void)
 {
@@ -11,16 +12,19 @@ int main(void)
 	MyUSART_Init(9600);
 	MyLED_Config();
 	MyLED(ON);
+	MyI2c_Init();
 	while(1)
 	{
+		
 		u8 byte[64];
 		u8 size = MyUSART_GetRxBufSize();
 		if(size)
 		{
-			MyUSART_Receive(byte,size);
-			MyUSART_Transmit(byte,size);
+			while(MyI2c_Read(0x68,0x75,byte) == false) ;
+			MyUSART_Receive(&byte[1],size);
+			MyUSART_Transmit(byte,size + 1);
 		}
-		Delay_ms(100);
+		Delay_ms(500);
 		MyLED_Toggle();
 	}
 }

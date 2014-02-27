@@ -1,5 +1,5 @@
-#ifndef __MYLED_H
-#define	__MYLED_H
+#ifndef LED_H
+#define	LED_H
 
 #include "sys.h"
 

@@ -56,7 +56,7 @@
 #define PGout(n)   BIT_ADDR(GPIOG_ODR_Addr,n)  // ‰≥ˆ 
 #define PGin(n)    BIT_ADDR(GPIOG_IDR_Addr,n)  // ‰»Î
 
-#define bool u8
+#define bool int8_t
 #define true 1
 #define false 0
 
