@@ -351,7 +351,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F10X_MD,USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\SYSTEM\delay;..\SYSTEM\sys;..\SYSTEM\usart;..\USER;..\STM32F10x_FWLib\inc;..\CORE;..\HARDWARE\myled</IncludePath>
+              <IncludePath>..\SYSTEM\sys;..\SYSTEM\usart;..\USER;..\STM32F10x_FWLib\inc;..\CORE;..\HARDWARE\led;..\SYSTEM\time;..\SYSTEM\i2c</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -418,25 +418,15 @@
           <GroupName>HARDWARE</GroupName>
           <Files>
             <File>
-              <FileName>myled.c</FileName>
+              <FileName>led.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\HARDWARE\myled\myled.c</FilePath>
-            </File>
-            <File>
-              <FileName>myled.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\HARDWARE\myled\myled.h</FilePath>
+              <FilePath>..\HARDWARE\led\led.c</FilePath>
             </File>
           </Files>
         </Group>
         <Group>
           <GroupName>SYSTEM</GroupName>
           <Files>
-            <File>
-              <FileName>delay.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\SYSTEM\delay\delay.c</FilePath>
-            </File>
             <File>
               <FileName>sys.c</FileName>
               <FileType>1</FileType>
@@ -446,6 +436,16 @@
               <FileName>usart.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\SYSTEM\usart\usart.c</FilePath>
+            </File>
+            <File>
+              <FileName>time.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\SYSTEM\time\time.c</FilePath>
+            </File>
+            <File>
+              <FileName>i2c.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\SYSTEM\i2c\i2c.c</FilePath>
             </File>
           </Files>
         </Group>
