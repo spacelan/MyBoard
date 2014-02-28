@@ -4,7 +4,6 @@
 #include "led.h"
 #include "i2c.h"
 #include "inv_mpu.h"
-#include "communication.h"
 
 int main(void)
 {
@@ -17,10 +16,13 @@ int main(void)
 	while(mpu_init());
 	while(1)
 	{
-		u8 type;
-		short accel[3];
-		MyCOM_GetData(accel,&type);
-		if(type) MyCOM_SendData(accel,type);
+		uint8_t data[64];
+		uint8_t size = MyUSART_GetRxBufSize();
+		if(size)
+		{
+			MyUSART_Receive(data,size);
+			MyUSART_Transmit(data,size);
+		}
 		Delay_ms(100);
 		MyLED_Toggle();
 	}
