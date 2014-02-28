@@ -228,3 +228,7 @@ USER/MyBoard_MyBoard.dep
 *.o
 USER/startup_stm32f10x_md.lst
 USER/ExtDll.iex
+OUTPUTANDLISTING/MyBoard.htm
+OUTPUTANDLISTING/MyBoard.map
+OUTPUTANDLISTING/MyBoard.sct
+OUTPUTANDLISTING/startup_stm32f10x_md.lst
