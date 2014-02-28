@@ -412,6 +412,11 @@
               <FileType>5</FileType>
               <FilePath>.\stm32f10x_conf.h</FilePath>
             </File>
+            <File>
+              <FileName>communication.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\communication.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

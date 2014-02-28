@@ -161,7 +161,7 @@ static uint8_t I2C_ReceiveByte(void)
 //===================================================================================
 
 /*********************************************************************
-*Function: I2c_Init
+*Function: MyI2C_Init
 *Description: i2c总线初始化
 *Input:
 *Output:
@@ -170,7 +170,7 @@ static uint8_t I2C_ReceiveByte(void)
 *Author: Spacelan
 *Date: 2014-2-25
 *********************************************************************/
-void MyI2c_Init(void)
+void MyI2C_Init(void)
 {
     GPIO_InitTypeDef gpio;
     RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB,ENABLE);
@@ -182,7 +182,7 @@ void MyI2c_Init(void)
 }
 
 /*********************************************************************
-*Function: I2c_WriteBuffer
+*Function: MyI2C_WriteBuffer
 *Description: 向从机写入数据
 *Input: uint8_t addr 从机地址
 *Input: uint8_t reg 从机寄存器起始地址
@@ -195,7 +195,7 @@ void MyI2c_Init(void)
 *Author: Spacelan
 *Date: 2014-2-25
 *********************************************************************/
-bool MyI2c_WriteBuffer(uint8_t addr, uint8_t reg, uint8_t len, uint8_t const *buf)
+bool MyI2C_WriteBuffer(uint8_t addr, uint8_t reg, uint8_t len, uint8_t const *buf)
 {
     int i;
     if (!I2C_Start())
@@ -219,7 +219,7 @@ bool MyI2c_WriteBuffer(uint8_t addr, uint8_t reg, uint8_t len, uint8_t const *bu
 }
 
 /*********************************************************************
-*Function:
+*Function: MyI2C_Write
 *Description:
 *Input:
 *Output:
@@ -228,9 +228,9 @@ bool MyI2c_WriteBuffer(uint8_t addr, uint8_t reg, uint8_t len, uint8_t const *bu
 *Author: Spacelan
 *Date: 2014-2-25
 *********************************************************************/
-bool MyI2c_Write(uint8_t addr, uint8_t reg, uint8_t const *data)
+bool MyI2C_Write(uint8_t addr, uint8_t reg, uint8_t const *data)
 {
-	return MyI2c_WriteBuffer(addr,reg,1,data);
+	return MyI2C_WriteBuffer(addr,reg,1,data);
 }
 
 /*********************************************************************
@@ -246,13 +246,13 @@ bool MyI2c_Write(uint8_t addr, uint8_t reg, uint8_t const *data)
 *********************************************************************/
 bool I2c_write(uint8_t addr, uint8_t reg, uint8_t len, uint8_t const *buf)
 {
-	if(MyI2c_WriteBuffer(addr,reg,len,buf))
+	if(MyI2C_WriteBuffer(addr,reg,len,buf))
 		return 0;
 	else return -1;
 }
 
 /*********************************************************************
-*Function: I2c_ReadBuffer
+*Function: MyI2C_ReadBuffer
 *Description: 从从机读取数据
 *Input: uint8_t addr 从机地址
 *Input: uint8_t reg 从机寄存器起始地址
@@ -263,7 +263,7 @@ bool I2c_write(uint8_t addr, uint8_t reg, uint8_t len, uint8_t const *buf)
 *Author: Spacelan
 *Date: 2014-2-25
 *********************************************************************/
-bool MyI2c_ReadBuffer(uint8_t addr, uint8_t reg, uint8_t len, uint8_t *buf)
+bool MyI2C_ReadBuffer(uint8_t addr, uint8_t reg, uint8_t len, uint8_t *buf)
 {
     if (!I2C_Start())
         return false;
@@ -290,9 +290,9 @@ bool MyI2c_ReadBuffer(uint8_t addr, uint8_t reg, uint8_t len, uint8_t *buf)
     return true;
 }
 
-bool MyI2c_Read(uint8_t addr, uint8_t reg, uint8_t *data)
+bool MyI2C_Read(uint8_t addr, uint8_t reg, uint8_t *data)
 {
-	return MyI2c_ReadBuffer(addr,reg,1,data);
+	return MyI2C_ReadBuffer(addr,reg,1,data);
 }
 
 /*********************************************************************
@@ -308,7 +308,7 @@ bool MyI2c_Read(uint8_t addr, uint8_t reg, uint8_t *data)
 *********************************************************************/
 bool I2c_read(uint8_t addr, uint8_t reg, uint8_t len, uint8_t *buf)
 {
-	if(MyI2c_ReadBuffer(addr,reg,len,buf))
+	if(MyI2C_ReadBuffer(addr,reg,len,buf))
 		return 0;
 	else return -1;
 }

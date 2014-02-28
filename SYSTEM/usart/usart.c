@@ -1,6 +1,6 @@
 #include "usart.h"
  
-#define MY_USART_BUF_SIZE 128
+#define MY_USART_BUF_SIZE 256
 u8 myUSARTRxBuf[MY_USART_BUF_SIZE];     //接收缓冲
 u8 myUSARTTxBuf[MY_USART_BUF_SIZE];	 //发送缓冲
 u8 rxBufHead = 0,rxBufTail = 0;
@@ -64,7 +64,9 @@ void MyUSART_SendByte()
 
 //压入发送队列尾部
 void MyUSART_Transmit(const u8 *data,u8 length)
-{
+{	
+	//队列中有数据，开启发送中断
+	USART_ITConfig(USART1, USART_IT_TXE, ENABLE);
 	while(length--)
 	{
 		myUSARTTxBuf[txBufTail] = *data;
