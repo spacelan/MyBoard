@@ -1,5 +1,4 @@
 #include "time.h"
-
 volatile uint32_t currentTime_ms = 0;
 uint64_t timer_us = 0;
 
