@@ -3,32 +3,43 @@
 #include "time.h"
 #include "led.h"
 #include "i2c.h"
+#include "flash.h"
 #include "inv_mpu.h"
+#include "storage.h"
 
-void Jump2App(uint32_t addr)
-{
-	uint32_t reset = *(uint32_t*)(addr+4);
-	uint32_t msp = *(uint32_t*)(addr);
-
-	__set_MSP(msp);
-	( (void(*)(void)) (reset) )();
-}
- 
 int main(void)
 {
-//	SystemInit(); 			 //ÏµÍ³Ê±ÖÓ³õÊ¼»¯Îª72M	  SYSCLK_FREQ_72MHz // £¡£¡ÒÑ¾­ÔÚÆô¶¯´úÂëÖĞÖ´ĞĞ£¡£¡
-	SCB->VTOR = FLASH_BASE | 0x8000; /* Vector Table Relocation in Internal FLASH. */
-	NVIC_Configuration(); 	 //ÉèÖÃNVICÖĞ¶Ï·Ö×é2:2Î»ÇÀÕ¼ÓÅÏÈ¼¶£¬2Î»ÏìÓ¦ÓÅÏÈ¼¶
-
-	MyTime_Init();	    	 //ÑÓÊ±º¯Êı³õÊ¼»¯	 
+	SystemInit(); 			 //ç³»ç»Ÿæ—¶é’Ÿåˆå§‹åŒ–ä¸º72M	  SYSCLK_FREQ_72MHz 
+	NVIC_Configuration(); 	 //è®¾ç½®NVICä¸­æ–­åˆ†ç»„2:2ä½æŠ¢å ä¼˜å…ˆçº§ï¼Œ2ä½å“åº”ä¼˜å…ˆçº§
+	MyTime_Init();	    	 //å»¶æ—¶å‡½æ•°åˆå§‹åŒ–	 
 	MyUSART_Init(115200);
 	MyI2C_Init();
 	MyLED_Config();
-	MyLED_Toggle();
-//	Jump2App(0x08008000);
+//	while(mpu_init());
+	MyStorage_Init();
+	
 	while(1)
 	{
-		Delay_ms(100);
+		uint8_t data[64];
+//		uint8_t size = MyUSART_GetRxBufSize();
+//		if(size)
+		{
+//			uint16_t halfWord = 0xabcd;
+//			MyFlash_Write(0x08008000,&halfWord,1);
+//			halfWord = 0;
+//			MyFlash_Read(0x08008000,&halfWord,1);
+//			MyUSART_Transmit((void *)(&halfWord),2);
+			
+
+			short accel[3] = {0x1234,0x5678,0x9abc};
+			short a[3];
+//			MyUSART_Receive((void*)accel,size);
+			MyStorage_Write(accel,STORAGE_DATA_TYPE_ACCEL_BIAS);
+			MyStorage_Program();
+			MyStorage_Read(a,STORAGE_DATA_TYPE_ACCEL_BIAS);
+//			MyUSART_Transmit((void*)a,6);
+		}
+		Delay_ms(500);
 		MyLED_Toggle();
 	}
 }

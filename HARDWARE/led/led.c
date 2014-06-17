@@ -1,9 +1,9 @@
 #include "led.h"
 /*
- * º¯ÊýÃû£ºMyLED_GPIO_Config
- * ÃèÊö  £ºÅäÖÃLEDÓÃµ½µÄI/O¿Ú
- * ÊäÈë  £ºÎÞ
- * Êä³ö  £ºÎÞ
+ * å‡½æ•°åï¼šMyLED_GPIO_Config
+ * æè¿°  ï¼šé…ç½®LEDç”¨åˆ°çš„I/Oå£
+ * è¾“å…¥  ï¼šæ— 
+ * è¾“å‡º  ï¼šæ— 
  */
 void MyLED_Config(void)
 {

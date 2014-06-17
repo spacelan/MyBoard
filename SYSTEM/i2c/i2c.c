@@ -14,7 +14,7 @@ uint16_t timeout;
 
 static void I2C_delay(void)
 {
-    volatile int i = 5;  //µ½1¶¼¿ÉÒÔ
+    volatile int i = 5;  //åˆ°1éƒ½å¯ä»¥
     while (i)
         i--;
 }
@@ -101,8 +101,8 @@ static bool I2C_WaitAck(void)
 
 /*********************************************************************
 *Function: I2C_SendByte
-*Description: ·¢ËÍÒ»×Ö½ÚÊı¾İ
-*Input: uint8_t byte Ğè·¢ËÍµÄ×Ö½Ú
+*Description: å‘é€ä¸€å­—èŠ‚æ•°æ®
+*Input: uint8_t byte éœ€å‘é€çš„å­—èŠ‚
 *Output:
 *Return:
 *Others:
@@ -129,10 +129,10 @@ static void I2C_SendByte(uint8_t byte)
 
 /*********************************************************************
 *Function: I2C_ReceiveByte
-*Description: ½ÓÊÕÒ»×Ö½ÚÊı¾İ
+*Description: æ¥æ”¶ä¸€å­—èŠ‚æ•°æ®
 *Input:
 *Output:
-*Return: ½ÓÊÕµ½µÄ×Ö½Ú
+*Return: æ¥æ”¶åˆ°çš„å­—èŠ‚
 *Others:
 *Author: Spacelan
 *Date: 2014-2-25
@@ -162,7 +162,7 @@ static uint8_t I2C_ReceiveByte(void)
 
 /*********************************************************************
 *Function: MyI2C_Init
-*Description: i2c×ÜÏß³õÊ¼»¯
+*Description: i2cæ€»çº¿åˆå§‹åŒ–
 *Input:
 *Output:
 *Return:
@@ -174,7 +174,7 @@ void MyI2C_Init(void)
 {
     GPIO_InitTypeDef gpio;
     RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB,ENABLE);
-	//ÒÑ¸ü¸Ä
+	//å·²æ›´æ”¹
     gpio.GPIO_Pin = GPIO_Pin_6 | GPIO_Pin_7;
     gpio.GPIO_Speed = GPIO_Speed_50MHz;
     gpio.GPIO_Mode = GPIO_Mode_Out_OD;
@@ -183,14 +183,14 @@ void MyI2C_Init(void)
 
 /*********************************************************************
 *Function: MyI2C_WriteBuffer
-*Description: Ïò´Ó»úĞ´ÈëÊı¾İ
-*Input: uint8_t addr ´Ó»úµØÖ·
-*Input: uint8_t reg ´Ó»ú¼Ä´æÆ÷ÆğÊ¼µØÖ·
-*Input: uint8_t len Êı¾İ³¤¶È£¬×Ö½Úµ¥Î»
-*Input: uint8_t const *buf Êı¾İÖ¸Õë
+*Description: å‘ä»æœºå†™å…¥æ•°æ®
+*Input: uint8_t addr ä»æœºåœ°å€
+*Input: uint8_t reg ä»æœºå¯„å­˜å™¨èµ·å§‹åœ°å€
+*Input: uint8_t len æ•°æ®é•¿åº¦ï¼Œå­—èŠ‚å•ä½
+*Input: uint8_t const *buf æ•°æ®æŒ‡é’ˆ
 *Output:
-*Return: 1 ³É¹¦
-*Return: 0 Ê§°Ü
+*Return: 1 æˆåŠŸ
+*Return: 0 å¤±è´¥
 *Others:
 *Author: Spacelan
 *Date: 2014-2-25
@@ -235,11 +235,11 @@ bool MyI2C_Write(uint8_t addr, uint8_t reg, uint8_t const *data)
 
 /*********************************************************************
 *Function: I2c_write
-*Description: ÓÃÓÚMPU6050µÄi2cº¯Êı
-*Description: ³É¹¦ 0 Ê§°Ü -1
+*Description: ç”¨äºMPU6050çš„i2cå‡½æ•°
+*Description: æˆåŠŸ 0 å¤±è´¥ -1
 *Input:
 *Output:
-*Return: ³É¹¦ 0 Ê§°Ü -1
+*Return: æˆåŠŸ 0 å¤±è´¥ -1
 *Others:
 *Author: Spacelan
 *Date: 2014-2-25
@@ -253,11 +253,11 @@ bool I2c_write(uint8_t addr, uint8_t reg, uint8_t len, uint8_t const *buf)
 
 /*********************************************************************
 *Function: MyI2C_ReadBuffer
-*Description: ´Ó´Ó»ú¶ÁÈ¡Êı¾İ
-*Input: uint8_t addr ´Ó»úµØÖ·
-*Input: uint8_t reg ´Ó»ú¼Ä´æÆ÷ÆğÊ¼µØÖ·
-*Input: uint8_t len Ğè¶ÁÈ¡µÄÊı¾İ³¤¶È
-*Output: uint8_t *buf Ö¸Ïò¶ÁÈ¡µÄÊı¾İ
+*Description: ä»ä»æœºè¯»å–æ•°æ®
+*Input: uint8_t addr ä»æœºåœ°å€
+*Input: uint8_t reg ä»æœºå¯„å­˜å™¨èµ·å§‹åœ°å€
+*Input: uint8_t len éœ€è¯»å–çš„æ•°æ®é•¿åº¦
+*Output: uint8_t *buf æŒ‡å‘è¯»å–çš„æ•°æ®
 *Return:
 *Others:
 *Author: Spacelan
@@ -297,11 +297,11 @@ bool MyI2C_Read(uint8_t addr, uint8_t reg, uint8_t *data)
 
 /*********************************************************************
 *Function: I2c_read
-*Description: ÓÃÓÚMPU6050µÄi2cº¯Êı
-*Description: ³É¹¦ 0 Ê§°Ü -1
+*Description: ç”¨äºMPU6050çš„i2cå‡½æ•°
+*Description: æˆåŠŸ 0 å¤±è´¥ -1
 *Input:
 *Output:
-*Return: ³É¹¦ 0 Ê§°Ü -1
+*Return: æˆåŠŸ 0 å¤±è´¥ -1
 *Others:
 *Author: Spacelan
 *Date: 2014-2-25
