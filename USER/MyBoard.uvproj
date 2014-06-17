@@ -351,7 +351,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F10X_MD,USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\SYSTEM\sys;..\SYSTEM\usart;..\USER;..\STM32F10x_FWLib\inc;..\CORE;..\HARDWARE\led;..\SYSTEM\time;..\SYSTEM\i2c;..\HARDWARE\eMPL;..\SYSTEM\flash;.\storage</IncludePath>
+              <IncludePath>..\SYSTEM\sys;..\SYSTEM\usart;..\USER;..\STM32F10x_FWLib\inc;..\CORE;..\HARDWARE\led;..\SYSTEM\time;..\SYSTEM\i2c;..\HARDWARE\eMPL;..\SYSTEM\flash;.\storage;..\HARDWARE\motor</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -437,6 +437,11 @@
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\eMPL\inv_mpu_dmp_motion_driver.c</FilePath>
             </File>
+            <File>
+              <FileName>motor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\motor\motor.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -511,6 +516,11 @@
               <FileName>stm32f10x_flash.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\STM32F10x_FWLib\src\stm32f10x_flash.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_tim.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\STM32F10x_FWLib\src\stm32f10x_tim.c</FilePath>
             </File>
           </Files>
         </Group>
